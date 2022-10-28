@@ -35,4 +35,6 @@ db[modelName].associate(db);
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// sequelize.sync({force:false}); //true면 DB를 다 날리고 false면 안날림 migration필요없음
+
 module.exports = db;
