@@ -2,7 +2,7 @@ const PostsService = require("../services/posts")
 
 class PostsController {
     postsService = new PostsService();
-    
+
     createPost = async(req,res,next) => {
         const { userId } = res.locals.user;
         // console.log(userId)
@@ -25,4 +25,4 @@ class PostsController {
     
 }
 
-module.exports = PostsController;ler;
+module.exports = PostsController;
