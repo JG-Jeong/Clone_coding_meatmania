@@ -6,6 +6,7 @@ const PostsController =require("../controller/posts");
 const postsController = new PostsController();
 
 router.post("/", authMiddleware , postsController.createPost);
-// router.get("/", authMiddleware)
+router.get("/", postsController.findAllProduct)
+router.get("/:postId", postsController.findOneProduct)
 
 module.exports = router;
