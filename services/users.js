@@ -15,9 +15,9 @@ class UserService {
   };
 
   // 회원가입 찾기위한 함수
-  createAccount = async (email, nickname, password) => {
+  signUp = async (email, nickname, password) => {
     // userRepository안에 있는 createAccount 함수를 이용하여 선언
-    const createAccountData = await this.usersRepository.createAccount(
+    const createAccountData = await this.usersRepository.signUp(
       email,
       nickname,
       password

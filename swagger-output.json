@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "3조 Swagger",
+    "description": "API문서",
+    "version": "알고싶으면 메로나"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "회원 가입API",
+      "description": "회원가입이요"
+    },
+    {
+      "name": "로그인API",
+      "description": ""
+    },
+    {
+      "name": "게시물API",
+      "description": ""
+    },
+    {
+      "name": "장바구니API",
+      "description": ""
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "any description..."
+    }
+  },
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/posts/": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/signup": {
+      "post": {
+        "description": "회원가입 기능입니더~",
+        "tags": ["회원 가입API"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "email"
+                },
+                "nickname": {
+                  "example": "nickname"
+                },
+                "password": {
+                  "example": "password"
+                },
+                "confirmPassword": {
+                  "example": "confirmPassword"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["로그인API"],
+        "description": "로그인",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "아이디"
+                },
+                "password": {
+                  "example": "패스워드"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  }
+}
