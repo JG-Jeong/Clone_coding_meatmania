@@ -3,7 +3,7 @@ const { Posts } = require("../models");
 class PostsRepository {
     
     createProduct = async ( userId, title, option, amount, cost, item, content, origin, deadline,imgUrl) => {
-        await Posts.create({userId,title,option,amount,cost,item,content,origin,deadline,imgUrl})
+        await Posts.create({userId,title,option,amount:1,cost,item,content,origin,deadline,imgUrl})
         return;
     }
     
@@ -20,8 +20,7 @@ class PostsRepository {
     deleteProduct = async(postId) => {
         await Posts.destroy({where:{postId}});
         return
-    }
-    
+    }    
 }
 
 module.exports = PostsRepository;

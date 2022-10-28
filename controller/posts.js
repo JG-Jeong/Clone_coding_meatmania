@@ -3,10 +3,10 @@ const PostsService = require("../services/posts")
 class PostsController {
     postsService = new PostsService();
 
-    createPost = async(req,res,next) => {
+    createProduct = async(req,res,next) => {
         const { userId } = res.locals.user;
         const {title, option, amount, cost, item, content, origin, deadline, imgUrl} = req.body;
-        await this.postsService.createPost(userId,title,option,amount,cost,item,content,origin,deadline,imgUrl);
+        await this.postsService.createProduct(userId,title,option,amount,cost,item,content,origin,deadline,imgUrl);
         res.send("상품 생성 완료")
     }
     
