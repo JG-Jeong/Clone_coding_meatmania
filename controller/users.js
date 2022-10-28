@@ -52,6 +52,12 @@ class UsersController {
   login = async (req, res, next) => {
     try {
       const { email, password } = req.body;
+
+      // 유효성 검사
+      const login = await this.usersService.login(email, password);
+      if (login === null)
+      return res.status(404).send({ ok : 0, statusCode : 404, errorMessage: "가입 정보를 찾을 수 없습니다" });
+
       await this.usersService.login(
         email,
         password
