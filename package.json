@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/JG-Jeong/Clone_coding_meatmania#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.3",
+    "supertest": "^6.3.1",
     "swagger-autogen": "^2.22.0",
     "swagger-ui-express": "^4.5.0"
   },
