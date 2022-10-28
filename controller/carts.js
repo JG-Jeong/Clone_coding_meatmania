@@ -1,4 +1,4 @@
-const CartsServic = require('../services/carts');
+const CartsService = require('../services/carts');
 
 class CartsController {
     constructor() {
@@ -12,7 +12,7 @@ class CartsController {
             const { userId } = res.locals.user ;
 
             // body에서 입력받은 값으로 cart생성
-            const createCartsData = await this.cartsService.createCarts( {postId, userId, option, amount, cost});
+            const createCartsData = await this.cartsService.createCarts( postId, userId, option, amount, cost);
             
             //createCartsData 를 결과값을 return
             return res.status(200).json({ createCartsData })
@@ -28,13 +28,13 @@ class CartsController {
     }
 
     //carts 조회
-    // findcarts = async (req, res, next) => {
-    //     const { userId } = res.locals.user ;
-    
+    getCarts = async (req, res, next) => {
+        const { userId } = res.locals.user ;
         
+        const data = await this.cartsService.getCarts({ userId });
         
-        
-    // }
+        return res.send(200).json({data})
+    }
 
     // carts 삭제
     deleteCarts = async (req, res, next) => {
