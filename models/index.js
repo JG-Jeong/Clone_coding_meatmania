@@ -11,9 +11,9 @@ const db = {}; //시퀄이나 유저 객체 모델링을 담기 위해 객체를
 
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs
@@ -24,12 +24,12 @@ fs
 .forEach(file => {
   const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
   db[model.name] = model;
-});
+})
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+if (db[modelName].associate) {
+db[modelName].associate(db);
+}
 });
 
 db.sequelize = sequelize;
