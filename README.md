@@ -3,8 +3,11 @@
 🙏 읽어주세요
 
 1️⃣ package는 아래 package를 설치해 주세요
+</br>
 npm init -y
-npm install express jsonwebtoken cookie-parser sequelize mysql2 socket.io -S
+</br>
+npm install express jsonwebtoken cookie-parser sequelize mysql2 socket.io cors -S
+</br>
 npm install sequelize-cli nodemon jest supertest swagger-ui-express swagger-autogen -D
 
 2️⃣ API
