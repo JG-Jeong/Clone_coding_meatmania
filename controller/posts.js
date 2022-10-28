@@ -10,7 +10,7 @@ class PostsController {
         await this.postsService.createPost(userId,title,option,amount,cost,item,content,origin,deadline);
         res.send("상품 생성 완료")
     }
-
+    
 
 }
 
