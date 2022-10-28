@@ -18,9 +18,10 @@ module.exports = async (req, res, next) => {
       });
     }
 
-    const  {nickname}  = jwt.verify(tokenValue, process.env.SECRET_KEY);
+    const  {userId}  = jwt.verify(tokenValue, process.env.SECRET_KEY);
     // console.log(nickname)
-    const user = await Users.findAll({where : {nickname}})
+    const user = await Users.findAll({where : {userId}})
+    console.log(user)
     // console.log(user[0].dataValues)
       // 익스프레스에서 locals라는 우리가 유틸리티 하게 사용할 수 있는 그런 공간을 제공
       res.locals.user = user[0].dataValues;
