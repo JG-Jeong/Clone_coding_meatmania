@@ -17,7 +17,7 @@ class UsersController {
 
       // 유저 중복 검사
       if (isSameUser) {
-        throw new Error("이미 가입된 이메일이 있습니다.")
+        throw new Error("이미 가입된 이메일이 존재합니다.")
       }
 
       //이메일 형식이 아닐 경우

@@ -18,12 +18,13 @@ module.exports = async (req, res, next) => {
       });
     }
 
-    const  {nickname}  = jwt.verify(tokenValue, process.env.SECRET_KEY);
+    const  {email}  = jwt.verify(tokenValue, process.env.SECRET_KEY);
     // console.log(nickname)
-    const user = await Users.findAll({where : {nickname}})
-    // console.log(user[0].dataValues)
+    const user = await Users.findAll({where : {email}})
+    // console.log(user)
       // 익스프레스에서 locals라는 우리가 유틸리티 하게 사용할 수 있는 그런 공간을 제공
       res.locals.user = user[0].dataValues;
+      // console.log(res.locals.user)
       // **** 반드시 next 먼저 호출해야함 안그러면 미들웨어 레벨 예외처리 걸려서 그 뒤에있는 미들웨어는 연결 x
       next(); 
   } catch (error) {
