@@ -1,4 +1,4 @@
-const { Users } = require("../models");
+const { Users } = require("../models"); 
 const { Op } = require("sequelize");
 
 class UsersRepository { 
@@ -34,6 +34,12 @@ class UsersRepository {
     const loginData = await Users.findOne({ where: { email, password } });
     return loginData;
   };
+
+  // refreshToken 업데이트 하는 함수
+  updateToken = async (email, refresh_token) => {
+    const updateTokenData = await Users.update({ refresh_token : refresh_token }, { where: { email : email } });
+    return updateTokenData;
+  }
 }
 
 module.exports = UsersRepository;
