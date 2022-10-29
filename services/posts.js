@@ -20,6 +20,11 @@ class PostsService {
         return findOnePost
     }
 
+    updateProduct = async( amount,postId, userId) => {
+        const updateProduct = await this.postsRepository.updateProduct(amount, postId, userId);
+        return updateProduct
+    }
+
     deleteProduct = async(postId) => {
         await this.postsRepository.deleteProduct(postId);
         return 

@@ -8,6 +8,7 @@ const postsController = new PostsController();
 router.post("/", authMiddleware , postsController.createProduct);
 router.get("/", postsController.findAllProduct);
 router.get("/:postId", postsController.findOneProduct);
+router.put("/:postId",authMiddleware, postsController.updateProduct);
 router.delete("/:postId", postsController.deleteProduct)
 
 
