@@ -10,19 +10,29 @@ class CartsRepository {
     };
 
     //carts 조회
-    getCarts = async ( userId ) => {
+    getCarts = async (userId) => {
+        
         const carts = await Carts.findAll({
-            where : {userId}
+            where:  {userId}
         });
+        
         return carts;
     }
     
     //cart 삭제
-    deleteCarts = async ( postId, userId ) => {
+    deleteCarts = async ( userId, postId ) => {
         const data = await Carts.destroy({
-            where : { postId, userId }
+            where : { userId, postId }
         });
         return data;
+    }
+    
+    //carts 단일 품목 수량(amount)변경
+    updateCarts = async ( userId, postId, amount ) => {
+        const indiCarts = await Carts.update(
+            {amount},
+            {where: { postId, userId }})
+        return indiCarts
     }
 }
 

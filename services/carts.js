@@ -15,20 +15,25 @@ class CartsService {
     
     
     //carts 조회
-    getCarts = async ( uesrId ) => {
-        const carts = await this.cartsRepository.getCarts({})  // 여기 좀 고민해 볼것. ()안에 {}를 쓸까 아니면 그냥 둘까 뭔 차이가 있을까?
-        
+    getCarts = async ( userId ) => {
+        const carts = await this.cartsRepository.getCarts( userId ) ;
+
         return carts;
     }
     
     //carts 삭제
-    deleteCarts = async ( postId, userId ) => {
-        const data = await this.cartsRepository.deleteCarts({
-            where : { postId, userId }
-        });
+    deleteCarts = async ( postId, userId  ) => {
+        const data = await this.cartsRepository.deleteCarts( postId, userId);
+        
         return data;
     };
     
+    //carts 단일 품목 수량(amount)변경
+    updateCarts = async ( userId, postId, amount ) => {
+        const indiCarts = await this.cartsRepository.updateCarts( userId, amount, postId )
+        return indiCarts
+    }
+    
 }
     
-module.exports = CartsRepository;
+module.exports = CartsService;
