@@ -6,11 +6,11 @@ app.use(cookieParser());
 
 const swaggerFile = require("./swagger-output");
 const swaggerUi = require("swagger-ui-express");
-// // const cors = require("cors");
+const cors = require("cors");
 
-// app.use(cors({
-// origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
-// }));
+app.use(cors({
+origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
+}));
 
 app.use(
   "/swagger",
