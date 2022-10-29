@@ -1,4 +1,4 @@
-const UsersRepository = require("../repository/users");
+const UsersRepository = require("../repository/users"); 
 
 class UserService {
   // 새 인스턴스 생성
@@ -42,6 +42,18 @@ class UserService {
       nickname: loginData.nickname,
       email: loginData.email,
       password: loginData.password,
+    };
+  };
+
+  // refreshToken 업데이트 하는 함수
+  updateToken = async(email, refresh_token) => {
+    // console.log(refresh_Token)
+    await this.usersRepository.updateToken(email, refresh_token);
+    const findData = await this.usersRepository.findUserAccount(email, refresh_token);
+
+    return  {
+      email: findData.email,
+      refresh_token : findData.refresh_token
     };
   };
 }

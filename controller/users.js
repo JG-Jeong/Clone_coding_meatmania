@@ -63,18 +63,20 @@ class UsersController {
         password
       );
 
-      const expires = new Date();
-      expires.setMinutes(expires.getMinutes() + 60);
-  
-      const token = jwt.sign( { email: email }, process.env.SECRET_KEY,
-      { expiresIn: "1000000s" }
-      );
 
-      res.cookie(process.env.COOKIE_NAME, `Bearer ${token}`, {
-        expires: expires,
-      });
+      // accesstoken 생성
+      const accessToken = jwt.sign( { email: email }, process.env.SECRET_KEY, { expiresIn: "15m" });
+
+      // refreshtoken 생성
+      const refresh_token = jwt.sign( {}, process.env.SECRET_KEY,{ expiresIn: "1d" });
+
+      // refreshtoken DB에 업데이트
+      await this.usersService.updateToken(
+        email,
+        refresh_token
+      );
   
-      res.status(201).json({ token });
+      res.status(201).json({ accessToken : `Bearer ${accessToken}`, refresh_token : `Bearer ${refresh_token}` });
     } catch(err) {
       res.status(400).json({ok : 0, statusCode : 400, message : "로그인 실패"})
     }
