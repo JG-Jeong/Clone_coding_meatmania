@@ -21,6 +21,16 @@ class PostsController {
         res.status(200).json({data: findOnePost});
     }
 
+    updateProduct = async (req, res, next) => {
+        const { amount } = req.query;
+        const { postId } = req.params;
+        const { userId } = res.locals.user;
+        const updateProduct = await this.postsService.updateProduct(amount, postId, userId);
+        res.status(200).json({data : updateProduct})
+    }
+
+
+
     deleteProduct = async (req, res,next) => {
         const { postId } = req.params;
         const deleteProduct = await this.postsService.deleteProduct(postId);
