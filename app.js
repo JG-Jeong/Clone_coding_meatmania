@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const routes = require("./router");
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
+app.use(cookieParser(process.env.SECRET_KEY));
 
 const swaggerFile = require("./swagger-output");
 const swaggerUi = require("swagger-ui-express");
