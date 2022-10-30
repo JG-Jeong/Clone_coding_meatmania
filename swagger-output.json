@@ -1,108 +1,241 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "3조 Swagger",
-    "description": "API문서",
-    "version": "알고싶으면 메로나"
+    "title": "My API",
+    "description": "Week7 Clone Coding API",
+    "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "tags": [
-    {
-      "name": "회원 가입API",
-      "description": "회원가입이요"
-    },
-    {
-      "name": "로그인API",
-      "description": ""
-    },
-    {
-      "name": "게시물API",
-      "description": ""
-    },
-    {
-      "name": "장바구니API",
-      "description": ""
-    }
-  ],
-  "schemes": [
-    "http"
-  ],
-  "securityDefinitions": {
-    "apiKeyAuth": {
-      "type": "apiKey",
-      "in": "header",
-      "name": "Authorization",
-      "description": "any description..."
-    }
-  },
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "schemes": ["http"],
   "paths": {
-    "/posts/": {
+    "/posts": {
       "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/users/signup": {
-      "post": {
-        "description": "회원가입 기능입니더~",
-        "tags": ["회원 가입API"],
+        "tags": ["posts"],
+        "description": "상품 게시물 생성",
         "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "email": {
-                  "example": "email"
+                "title": {
+                  "example": "미국에서 도축된 한우"
                 },
-                "nickname": {
-                  "example": "nickname"
+                "option": {
+                  "example": "보통(16mm)"
                 },
-                "password": {
-                  "example": "password"
+                "amount": {
+                  "example": 5
                 },
-                "confirmPassword": {
-                  "example": "confirmPassword"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/users/login": {
-      "post": {
-        "tags": ["로그인API"],
-        "description": "로그인",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "아이디"
+                "cost": {
+                  "example": 21300
                 },
-                "password": {
-                  "example": "패스워드"
+                "item": {
+                  "example": "미국산 한우"
+                },
+                "content": {
+                  "example": "100g당 3,000원"
+                },
+                "origin": {
+                  "example": "캘리포니아"
+                },
+                "deadline":{ 
+                  "example": "2022년 11월 11일"
                 }
               }
             }
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "200": {
+            "description": "상품 생성 완료"
           },
-          "403": {
-            "description": "Forbidden"
+          "401": {
+            "description": "경로 요청이 잘못되었습니다."
+          }
+        }
+      },
+      "get": {
+        "tags": ["posts"],
+        "description": "모든 상품 조회",
+        "responses": {
+          "200": {
+            "description": "모든 상품 조회"
+          },
+          "401": {
+            "description": "경로 요청이 잘못되었습니다."
+          }
+        }
+      }
+    },
+    "/posts/{postId}": {
+      "get": {
+        "tags": ["posts"],
+        "description": "상품 상세 조회",
+        "parameters": [
+          {
+            "in": "path",
+            "type": "integer",
+            "name": "postId",
+            "default": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "상품 조회 완료"
+          },
+          "400": {
+            "description": "없는 상품입니다."
+          }
+        }
+      },
+      "put": {
+        "tags": ["posts"],
+        "description": "상품 옵션 변경",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "/?amount=?",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "장바구니 수량 수정 완료"
+          },
+          "401": {
+            "description": "로그인이 필요한 기능입니다."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["posts"],
+        "description": "상품 삭제",
+        "parameters": [
+          {
+            "in": "path",
+            "type": "integer",
+            "name": "postId"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "장바구니 수량 삭제 완료"
+          },
+          "401": {
+            "description": "로그인이 필요한 기능입니다."
+          }
+        }
+      }
+    },
+    "/users/signup": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/login": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/carts/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
