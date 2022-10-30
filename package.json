@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
     "sequelize": "^6.25.3",
+    "socket.io": "^4.5.3",
     "supertest": "^6.3.1",
     "swagger-autogen": "^2.22.0",
     "swagger-ui-express": "^4.5.0"

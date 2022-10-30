@@ -1,5 +1,4 @@
 const CartsRepository = require('../repository/carts');
-const { Carts } = require("../models");
 
 class CartsService {
     constructor() {
@@ -10,9 +9,8 @@ class CartsService {
     createCarts = async ( postId, userId, option, amount, cost ) => {
         const carts = await this.cartsRepository.createCarts( postId, userId, option, amount, cost )
         
-        return carts
+        return carts;
     };
-    
     
     //carts 조회
     getCarts = async ( userId ) => {
@@ -31,7 +29,8 @@ class CartsService {
     //carts 단일 품목 수량(amount)변경
     updateCarts = async ( userId, postId, amount ) => {
         const indiCarts = await this.cartsRepository.updateCarts( userId, amount, postId )
-        return indiCarts
+        
+        return indiCarts;
     }
     
 }
