@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 const routes = require("./router");
+
+const http = require("http");
+const server = http.createServer(app);
+
 const cookieParser = require('cookie-parser');
 app.use(cookieParser(process.env.SECRET_KEY));
 
@@ -20,6 +24,5 @@ app.use(
 
 app.use(express.json());
 app.use("/", routes);
-app.listen(3000, () => {
-  console.log("3000번 포트로 열렸습니다");
-});
+
+module.exports = server

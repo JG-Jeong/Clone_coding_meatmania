@@ -43,13 +43,13 @@ class CartsController {
         const { userId } = res.locals.user ;
         
         const deleteCarts = await this.cartsService.deleteCarts( userId, postId );
-        res.status(200).json({ message : "carts deleted" });
+         res.status(200).json({ message : "carts deleted" });
     }
     
     //carts 단일 품목 수량(amount)변경
     updateCarts = async ( req, res, next ) => {
         const { amount, postId } = req.body;
-        const { userId } = res.locals.user ;
+        const { userId } = res.locals.user;
         
         const indiCarts = await this.cartsService.updateCarts( userId, amount, postId )
         res.status(200).json({ message : "carts updated" });
