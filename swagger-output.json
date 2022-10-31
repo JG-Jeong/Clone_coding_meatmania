@@ -5,7 +5,7 @@
     "description": "Week7 Clone Coding API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "www.spartaseosu.shop",
   "basePath": "/",
   "tags": [
     {
@@ -26,7 +26,7 @@
     }
   ],
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "apiKeyAuth": {
@@ -43,12 +43,7 @@
       "post": {
         "tags": ["게시물API"],
         "description": "상품 게시물 생성",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
+        "parameters": [          
           {
             "name": "body",
             "in": "body",
