@@ -78,6 +78,9 @@
                 },
                 "deadline":{ 
                   "example": "2022년 11월 11일"
+                },
+                "imgUrl":{ 
+                  "example": "https://jeongyookgak-commerce.s3.ap-northeast-2.amazonaws.com/jyg-custom-seoul-app/frontend/thumbnails/transparent_background/porkbelly-fresh-list.png"
                 }
               }
             }
@@ -105,7 +108,7 @@
         }
       }
     },
-    "/posts/{postId}": {
+    "/posts/{postId}/": {
       "get": {
         "tags": ["게시물API"],
         "description": "상품 상세 조회",
@@ -131,20 +134,20 @@
         "description": "상품 옵션 변경",
         "parameters": [
           {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "postId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "/?amount=?",
+            "name": "amount",
             "in": "query",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
-            "in": "header",
             "type": "string"
           }
         ],
