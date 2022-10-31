@@ -2,9 +2,8 @@ const { Posts } = require("../models");
 const { Op } = require("sequelize");
 
 class PostsRepository {
-  createProduct = async (userId,title,option,amount,cost,item,content,origin,deadline,imgUrl) => {
+  createProduct = async (title,option,amount,cost,item,content,origin,deadline,imgUrl) => {
     await Posts.create({
-      userId,
       title,
       option,
       amount: 1,
@@ -28,13 +27,13 @@ class PostsRepository {
     return findOnePost;
   };
 
-  updateProduct = async (amount, postId, userId) => {
-    const updateProduct = await Posts.update(
-      { amount },
-      { where: { [Op.and]: [{ userId }, { postId }] } }
-    );
-    return updateProduct;
-  };
+  // updateProduct = async (amount, postId, userId) => {
+  //   const updateProduct = await Posts.update(
+  //     { amount },
+  //     { where: { [Op.and]: [{ userId }, { postId }] } }
+  //   );
+  //   return updateProduct;
+  // };
 
   deleteProduct = async (postId) => {
     await Posts.destroy({ where: { postId } });
