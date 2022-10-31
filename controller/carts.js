@@ -1,5 +1,6 @@
 const CartsService = require('../services/carts');
 const { Carts } = require("../models");
+const PostsService = require('../services/posts')
 
 class CartsController {
     constructor() {
@@ -9,14 +10,14 @@ class CartsController {
     //carts에 물건 생성
     createCarts = async (req, res, next) => {
         try {
-            const { postId, option, amount, cost } = req.body ;
+            const { postId, amount, } = req.body ;
             const { userId } = res.locals.user ;
-            if (!postId || !option || !amount || !cost) {
+            if ( !postId || !amount ) {
                 throw new Error("입력값을 확인해 주세요");
             }
             
             // body에서 입력받은 값으로 cart생성
-            const createCartsData = await this.cartsService.createCarts( postId, userId, option, amount, cost);
+            const createCartsData = await this.cartsService.createCarts( postId, userId, amount);
             
             //createCartsData 를 결과값을 return
             return res.status(200).json({ createCartsData })

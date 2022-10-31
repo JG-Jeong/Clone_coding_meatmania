@@ -1,11 +1,12 @@
 const CartsRepository = require('../repository/carts');
+const { Carts } = require("../models");
 
 class CartsService {
     constructor() {
         this.cartsRepository = new CartsRepository;
     };
     
-    //carts에 물건 생성 근데 이것만 하면 되는지 살짝 걱정되긴함 으음...
+    //carts에 물건 생성
     createCarts = async ( postId, userId, option, amount, cost ) => {
         const carts = await this.cartsRepository.createCarts( postId, userId, option, amount, cost )
         
