@@ -1,5 +1,6 @@
 const CartsService = require('../services/carts');
 const { Carts } = require("../models");
+const PostsService = require('../services/posts')
 
 class CartsController {
     constructor() {
@@ -11,7 +12,7 @@ class CartsController {
         try {
             const { postId, option, amount, cost } = req.body ;
             const { userId } = res.locals.user ;
-            if (!postId || !option || !amount || !cost) {
+            if ( !postId || !option || !amount || !cost) {
                 throw new Error("입력값을 확인해 주세요");
             }
             
