@@ -2,27 +2,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
-      userId: {
+    await queryInterface.createTable('Kakaos', {
+      kakaoId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      snsId: {
         type: Sequelize.STRING
       },
-      nickname: {
+      nick: {
         type: Sequelize.STRING
       },
-      password: {
+      provider: {
         type: Sequelize.STRING
-      },
-      refresh_token : {
-        type : Sequelize.STRING
-      },
-      salt : {
-        type : Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Kakaos');
   }
 };

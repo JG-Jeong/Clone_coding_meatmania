@@ -1,16 +1,17 @@
-const { Users } = require("../models"); 
+const { Users } = require("../models");  
 const { Op } = require("sequelize");
 
 class UsersRepository { 
 
   // 회원가입을 위한 함수
-  signUp = async (email, nickname, password) => {
+  signUp = async (email, nickname, password, salt) => {
 
     // create로 회원가입
     const createAccountData = await Users.create({
       email,
       nickname,
       password,
+      salt
     });
     return createAccountData;
   };
@@ -28,10 +29,10 @@ class UsersRepository {
   };
 
   // 로그인을 위한 함수
-  login = async (email, password) => {
+  login = async (email) => {
     
-    // findOne으로 email, password가 있는지 확인
-    const loginData = await Users.findOne({ where: { email, password } });
+    // findOne으로 email이 있는지 확인
+    const loginData = await Users.findOne({ where: {email} });
     return loginData;
   };
 
