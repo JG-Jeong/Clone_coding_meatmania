@@ -1,4 +1,4 @@
-const UsersRepository = require("../repository/users"); 
+const UsersRepository = require("../repository/users");
 
 class UserService {
   // 새 인스턴스 생성
