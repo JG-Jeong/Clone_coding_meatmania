@@ -2,8 +2,9 @@ const { Posts } = require("../models");
 const { Op } = require("sequelize");
 
 class PostsRepository {
-  createProduct = async (title,option,amount,cost,item,content,origin,deadline,imgUrl) => {
+  createProduct = async (category, title,option,amount,cost,item,content,origin,deadline,imgUrl) => {
     await Posts.create({
+      category,
       title,
       option,
       amount: 1,
