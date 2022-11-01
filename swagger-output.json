@@ -50,6 +50,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "category": {
+                  "example": "소"
+                },
                 "title": {
                   "example": "미국에서 도축된 한우"
                 },
@@ -123,38 +126,7 @@
             "description": "없는 상품입니다."
           }
         }
-      },
-      "put": {
-        "tags": ["게시물API"],
-        "description": "상품 옵션 변경",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
-            "name": "postId",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "amount",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "장바구니 수량 수정 완료"
-          },
-          "401": {
-            "description": "로그인이 필요한 기능입니다."
-          }
-        }
-      },
+      },      
       "delete": {
         "tags": ["게시물API"],
         "description": "상품 삭제",
