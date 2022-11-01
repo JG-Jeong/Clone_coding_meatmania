@@ -41,9 +41,9 @@ class CartsController {
     // carts 삭제
     deleteCarts = async (req, res, next) => {
         const { postId } = req.body ;
-        const { userId } = res.locals.user ;
+        // const { userId } = res.locals.user ;
         
-        const deleteCarts = await this.cartsService.deleteCarts( userId, postId );
+        const deleteCarts = await this.cartsService.deleteCarts( postId );
          res.status(200).json({ message : "carts deleted" });
     }
     
