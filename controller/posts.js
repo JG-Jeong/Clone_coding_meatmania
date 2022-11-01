@@ -5,8 +5,8 @@ class PostsController {
 
     createProduct = async(req,res,next) => {
         try{        
-        const {title, option, amount, cost, item, content, origin, deadline, imgUrl} = req.body;
-        await this.postsService.createProduct(title,option,amount,cost,item,content,origin,deadline,imgUrl);
+        const {category, title, option, amount, cost, item, content, origin, deadline, imgUrl} = req.body;
+        await this.postsService.createProduct(category, title,option,amount,cost,item,content,origin,deadline,imgUrl);
         res.status(200).json({message:"상품 생성 완료"})
         }catch(e){
             res.status(400).json({message: e.message})
@@ -44,8 +44,6 @@ class PostsController {
     //     }
     // }
 
-
-
     deleteProduct = async (req, res,next) => {
         try{
         const { postId } = req.params;
@@ -54,9 +52,7 @@ class PostsController {
         catch(e){
             res.status(400).json({message: e.message})
         }
-    }
-    
-    
+    }    
 }
 
 module.exports = PostsController;

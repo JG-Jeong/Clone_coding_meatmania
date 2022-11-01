@@ -3,10 +3,10 @@ const PostsRepository = require("../repository/posts");
 class PostsService {
     postsRepository = new PostsRepository();
     
-    createProduct = async(title,option,amount,cost,item,content,origin,deadline,imgUrl) => {
+    createProduct = async(category, title,option,amount,cost,item,content,origin,deadline,imgUrl) => {
         try{
         await this.postsRepository.createProduct(
-            title,option,amount,cost,item,content,origin,deadline,imgUrl
+            category, title,option,amount,cost,item,content,origin,deadline,imgUrl
         )
         // if(title==='' || option==='' || amount==='' || cost==='' || item==='' || content==='' || origin==='' || deadline==='' || imgUrl===''){
         //     throw { message : "올바른 형식으로 입력해주세요"}
