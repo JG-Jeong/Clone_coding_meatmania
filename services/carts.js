@@ -21,8 +21,8 @@ class CartsService {
     }
     
     //carts 삭제
-    deleteCarts = async ( postId, userId  ) => {
-        const data = await this.cartsRepository.deleteCarts( postId, userId);
+    deleteCarts = async ( postId ) => {
+        const data = await this.cartsRepository.deleteCarts( postId );
         
         return data;
     };

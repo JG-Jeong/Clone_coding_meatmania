@@ -55,9 +55,9 @@ class CartsRepository {
     }
     
     //cart 삭제
-    deleteCarts = async ( userId, postId ) => {
+    deleteCarts = async ( postId ) => {
         const data = await Carts.destroy({
-            where : { userId, postId }
+            where : { postId }
         });
         return data;
     }

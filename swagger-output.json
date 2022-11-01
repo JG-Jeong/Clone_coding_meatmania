@@ -215,12 +215,28 @@
     },
     "/carts/": {
       "post": {
-        "description": "",
+        "tags" : ["장바구니API"],
+        "description": "장바구니 생성",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "postId": {
+                  "example": "1"
+                },
+                "amount": {
+                  "example": "1"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -233,7 +249,8 @@
         }
       },
       "get": {
-        "description": "",
+        "tags" : ["장바구니API"],
+        "description": "장바구니 조회",
         "parameters": [
           {
             "name": "authorization",
@@ -251,12 +268,25 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags" : ["장바구니API"],
+        "description": "장바구니 상품 개별 삭제",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "postId": {
+                  "example": "4"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -269,12 +299,28 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags" : ["장바구니API"],
+        "description": "장바구니 각 상품 수량 수정",
         "parameters": [
           {
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name" : "body",
+            "in" : "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "postId": {
+                  "example": "4"
+                },
+                "amount": {
+                  "example": "2"
+                }
+              }
+            }
           }
         ],
         "responses": {
