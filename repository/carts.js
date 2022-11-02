@@ -6,7 +6,7 @@ const { badRequestError } = require('../exception/exception')
 class CartsRepository {
 
     //carts에 물건 생성
-    createCarts = async ( postId, userId, amount ) => {
+    createCarts = async ( postId, userId, amount, imgUrl ) => {
         //cart에 넣을 상품이 Posts 에 등록된 제품이 아닌경우 오류 반환
         try{
             //body로 받아온 postId로 Post에서 어떤 제품인지 찾는다.
@@ -36,7 +36,7 @@ class CartsRepository {
             }else {
                 const option = findPosts.option;
                 const cost = findPosts.cost;
-                const carts = await Carts.create({ postId, userId, option, amount, cost })
+                const carts = await Carts.create({ postId, userId, option, amount, cost, imgUrl })
                 return carts;
             }
         }catch (error){
@@ -68,6 +68,11 @@ class CartsRepository {
             {amount},
             {where: { postId, userId }})
         return indiCarts
+    }
+
+    findImg = async (postId) => {
+        const findImg = await Posts.findOne({where : {postId}})
+        return findImg;
     }
 }
 
