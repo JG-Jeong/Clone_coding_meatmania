@@ -38,6 +38,8 @@ class UsersController {
         email,
         password
       );
+      
+      const getNickname = await this.usersService.getNickname(email, password);
 
 
       // accesstoken 생성
@@ -52,7 +54,7 @@ class UsersController {
         refresh_token
       );
   
-      res.status(201).json({ accessToken : `Bearer ${accessToken}`, refresh_token : `Bearer ${refresh_token}` });
+      res.status(201).json({ accessToken : `Bearer ${accessToken}`, refresh_token : `Bearer ${refresh_token}`, nickname : getNickname.nickname });
     } catch(err) {
       res.status(400).json({ok : 0, statusCode : 400, message : "로그인 실패"})
     }

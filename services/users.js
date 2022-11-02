@@ -70,11 +70,14 @@ class UserService {
     
     const findData = await this.usersRepository.findUserAccount(email, refresh_token);
 
-    return  {
-      email: findData.email,
-      refresh_token : findData.refresh_token
-    };
+    return  findData;
   };
+
+  // nickname 불러오기
+  getNickname = async(email, password) => {
+    const getNickname = await this.usersRepository.findUserAccount(email, password);
+    return getNickname;
+  }
 }
 
 module.exports = UserService;
