@@ -7,8 +7,8 @@ class CartsService {
     };
     
     //carts에 물건 생성
-    createCarts = async ( postId, userId, option, amount, cost, imgUrl ) => {
-        const carts = await this.cartsRepository.createCarts( postId, userId, option, amount, cost, imgUrl )
+    createCarts = async ( postId, userId, title, option, amount, cost, imgUrl ) => {
+        const carts = await this.cartsRepository.createCarts( postId, userId, title, option, amount, cost, imgUrl )
         
         return carts;
     };

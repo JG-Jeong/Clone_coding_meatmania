@@ -15,6 +15,9 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
+      title : {
+        type : Sequelize.STRING,
+      },
       option: {
         type: Sequelize.CHAR
       },
