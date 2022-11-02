@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     option: DataTypes.CHAR,
     amount: DataTypes.INTEGER,
-    cost: DataTypes.FLOAT
+    cost: DataTypes.FLOAT,
+    imgUrl: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Carts',

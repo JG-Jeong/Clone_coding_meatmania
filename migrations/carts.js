@@ -24,6 +24,9 @@ module.exports = {
       cost: {
         type: Sequelize.FLOAT
       },
+      imgUrl: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
