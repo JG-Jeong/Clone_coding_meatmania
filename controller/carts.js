@@ -19,7 +19,7 @@ class CartsController {
             const imgUrl = await this.cartsService.findImg(postId)
             
             // body에서 입력받은 값으로 cart생성
-            const createCartsData = await this.cartsService.createCarts( postId, userId, imgUrl.title, amount, imgUrl.imgUrl);
+            const createCartsData = await this.cartsService.createCarts( postId, userId, postId.title, amount, imgUrl.imgUrl);
             
             //createCartsData 를 결과값을 return
             return res.status(200).json({ createCartsData })
@@ -37,6 +37,7 @@ class CartsController {
     getCarts = async (req, res, next) => {
         const { userId } = res.locals.user ;
         const data = await this.cartsService.getCarts(userId);
+        console.log(data)
         return res.status(200).json({ data })
     }
 

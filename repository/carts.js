@@ -6,7 +6,7 @@ const { badRequestError } = require('../exception/exception')
 class CartsRepository {
 
     //carts에 물건 생성
-    createCarts = async ( postId, userId, title, amount, imgUrl ) => {
+    createCarts = async ( postId, userId, title, option, amount, cost, imgUrl ) => {
         //cart에 넣을 상품이 Posts 에 등록된 제품이 아닌경우 오류 반환
         try{
             //body로 받아온 postId로 Post에서 어떤 제품인지 찾는다.
@@ -14,7 +14,7 @@ class CartsRepository {
                 where : {
                     postId
                 },})
-            console.log(findPosts)
+            // console.log(findPosts)
             if(!findPosts) {
                 throw new badRequestError; // 제품이 Post에 없는 제품이면 404 베드 리퀘스트 를 띄운다.
             }
@@ -34,9 +34,9 @@ class CartsRepository {
                         userId,
                     },})
             }else {
-                const option = findPosts.option;
-                const cost = findPosts.cost;
-                const carts = await Carts.create({ postId, userId, title, option, amount, cost, imgUrl })
+                // const option = findPosts.option;
+                // const cost = findPosts.cost;
+                const carts = await Carts.create({ postId, userId, title : title, option, amount, cost, imgUrl })
                 return carts;
             }
         }catch (error){
@@ -71,7 +71,7 @@ class CartsRepository {
     }
 
     findImg = async (postId) => {
-        const findImg = await Posts.findOne({where : {postId}})
+        const findImg = await Posts.findAll({where : {postId}})
         return findImg;
     }
 }
